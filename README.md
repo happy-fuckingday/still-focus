@@ -145,7 +145,7 @@ docs/                   界面截图与验收说明
 
 V1.0 核心 **13 项自动化测试通过**，覆盖阶段转换、暂停恢复、重置、计数循环、99 分钟边界、日期计算、备份恢复和异常值修正。硬件与系统交互的验证范围、步骤及限制见 [ACCEPTANCE.md](docs/ACCEPTANCE.md)。
 
-可在 Windows 上执行 `dotnet run --project tests/StillFocus.VisualTests -c Release -- artifacts/visual` 进行窗口创建及渲染冒烟测试；测试使用隔离的临时配置，不读取真实日程。桌面捕获工具未能正确捕获此环境中的窗口画面，故仓库预览采用程序渲染，不作为实际鼠标交互验收的证明。
+可在具有交互桌面的 Windows 上执行 `dotnet run --project tests/StillFocus.VisualTests -c Release -- artifacts/visual` 进行窗口创建及渲染冒烟测试；测试使用隔离的临时配置，不读取真实日程。托管 CI 仅执行核心测试和发行构建。桌面捕获工具未能正确捕获此环境中的窗口画面，故仓库预览采用程序渲染，不作为实际鼠标交互验收的证明。
 
 提交问题时请描述系统版本、缩放比例、复现步骤、预期和实际行为；不要上传包含个人日程的配置或未脱敏截图。
 
