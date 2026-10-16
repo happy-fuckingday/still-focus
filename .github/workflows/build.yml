@@ -1,0 +1,29 @@
+name: Build and test Windows
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Test core and publish portable build
+        shell: pwsh
+        run: ./tools/publish.ps1
+      - name: Render WPF smoke-test snapshots
+        shell: pwsh
+        run: dotnet run --project tests/StillFocus.VisualTests -c Release -- artifacts/visual
+      - uses: actions/upload-artifact@v4
+        with:
+          name: StillFocus-win-x64
+          path: |
+            artifacts/*.zip
+            artifacts/*.sha256

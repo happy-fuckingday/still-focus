@@ -1,0 +1,22 @@
+<Window x:Class="StillFocus.App.SettingsWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ Title="设置 · 静时" Style="{StaticResource {x:Type Window}}" Width="580" Height="474" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" ShowInTaskbar="True" Icon="Assets/app.ico">
+ <Grid Margin="24">
+  <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+  <StackPanel><TextBlock Text="偏好设置" FontSize="23" FontWeight="SemiBold"/><TextBlock Text="少一点打扰，多一点专注。" Foreground="{StaticResource Muted}" Margin="0,7,0,20"/></StackPanel>
+  <Grid Grid.Row="1">
+   <Grid.ColumnDefinitions><ColumnDefinition Width="120"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+   <Border Background="#1D2938" CornerRadius="8" Margin="0,0,18,0"><StackPanel Margin="12"><TextBlock Text="◷" FontSize="38" Foreground="#82DCA5" Margin="0,7,0,12"/><TextBlock Text="静时" FontSize="18"/><TextBlock Text="STILLFOCUS" Foreground="{StaticResource Muted}" FontSize="10" Margin="0,5,0,24"/><TextBlock Text="本地运行&#x0a;无需账号&#x0a;专注当下" LineHeight="25" Foreground="{StaticResource Muted}" FontSize="11"/></StackPanel></Border>
+   <StackPanel Grid.Column="1">
+    <Grid><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="76"/></Grid.ColumnDefinitions><TextBlock Text="专注时长 / 分钟"/><TextBox x:Name="MinutesBox" Grid.Column="1" MaxLength="2" AutomationProperties.Name="专注分钟数"/></Grid>
+    <TextBlock Text="范围 1–99；当前阶段不受修改影响。" Foreground="{StaticResource Muted}" FontSize="11" Margin="0,7,0,10"/>
+    <WrapPanel><CheckBox x:Name="DaysCheck" Content="显示顶部倒数日" Margin="0,5,20,5"/><CheckBox x:Name="StartupCheck" Content="开机自启动" Margin="0,5"/></WrapPanel>
+    <TextBlock Text="完成提醒" Foreground="{StaticResource Muted}" Margin="0,14,0,3"/>
+    <WrapPanel><CheckBox x:Name="SoundCheck" Content="声音" Margin="0,5,18,5"/><CheckBox x:Name="ShakeCheck" Content="窗口摆动" Margin="0,5,18,5"/><CheckBox x:Name="ToastCheck" Content="中央提示" Margin="0,5"/></WrapPanel>
+    <Grid Margin="0,16,0,5"><Grid.ColumnDefinitions><ColumnDefinition Width="70"/><ColumnDefinition/><ColumnDefinition Width="42"/></Grid.ColumnDefinitions><TextBlock Text="不透明度"/><Slider x:Name="OpacitySlider" Grid.Column="1" Minimum="40" Maximum="100" TickFrequency="1" IsSnapToTickEnabled="True" VerticalAlignment="Center"/><TextBlock Grid.Column="2" Text="{Binding ElementName=OpacitySlider,Path=Value,StringFormat={}{0:0}%}" HorizontalAlignment="Right"/></Grid>
+    <CheckBox x:Name="HideCheck" Content="四边自动隐藏"/>
+    <CheckBox x:Name="ResetCheck" Content="保存时恢复默认窗口位置"/>
+   </StackPanel>
+  </Grid>
+  <DockPanel Grid.Row="2" Margin="0,20,0,0"><TextBlock x:Name="ErrorText" Foreground="#FFB2A6" FontSize="11"/><StackPanel Orientation="Horizontal" HorizontalAlignment="Right"><Button Content="取消" IsCancel="True"/><Button Content="保存设置" Background="#2867EB" BorderBrush="#4A82FF" IsDefault="True" Click="SaveClick" Margin="0"/></StackPanel></DockPanel>
+ </Grid>
+</Window>

@@ -1,0 +1,16 @@
+<Window x:Class="StillFocus.App.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ Title="静时 · StillFocus" Style="{StaticResource {x:Type Window}}" Width="240" Height="120" WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="True" Background="Transparent" ShowInTaskbar="False" Topmost="True" ShowActivated="False" Icon="Assets/app.ico"
+ MouseLeftButtonDown="BackgroundDown" MouseMove="BackgroundMove" MouseLeftButtonUp="BackgroundUp" MouseEnter="PointerEnter" MouseLeave="PointerLeave" MouseWheel="Wheel" KeyDown="WindowKeyDown">
+ <Border x:Name="Card" CornerRadius="12" BorderBrush="#62748C" BorderThickness="1" Background="#F2202936" ClipToBounds="True">
+  <Grid>
+   <Grid x:Name="ContentGrid" Margin="16,9,16,9">
+    <Grid.RowDefinitions><RowDefinition x:Name="DayRow" Height="23"/><RowDefinition Height="*"/><RowDefinition Height="20"/></Grid.RowDefinitions>
+    <TextBlock x:Name="DayText" FontSize="11" Foreground="#D4DFEE" HorizontalAlignment="Stretch" TextAlignment="Center" TextTrimming="CharacterEllipsis" Cursor="Hand" MouseLeftButtonDown="DayClick"/>
+    <TextBlock x:Name="TimerText" Grid.Row="1" Text="25:00" FontFamily="Cascadia Mono, Consolas" FontWeight="SemiBold" FontSize="46" HorizontalAlignment="Center" Cursor="Hand" MouseLeftButtonDown="TimerDown" ToolTip="单击开始 / 暂停 · 双击重置并暂停" AutomationProperties.Name="倒计时，单击开始或暂停，双击重置"/>
+    <TextBlock x:Name="ClockText" Grid.Row="2" FontSize="12" Foreground="#D6E0EC"/>
+    <TextBlock x:Name="CountText" Grid.Row="2" FontSize="12" Foreground="#D6E0EC" HorizontalAlignment="Right" ToolTip="累计完成的专注次数，99 后循环为 00"/>
+   </Grid>
+   <Border x:Name="Grip" Visibility="Collapsed" Background="#405B80" CornerRadius="3" Margin="1"><TextBlock x:Name="GripText" Text="•" FontSize="10" HorizontalAlignment="Center"/></Border>
+  </Grid>
+ </Border>
+</Window>

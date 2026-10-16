@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AssemblyName>StillFocus</AssemblyName>
+    <RootNamespace>StillFocus.App</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
+    <DebugType>none</DebugType>
+    <PublishTrimmed>false</PublishTrimmed>
+    <!-- WPF owns the entry point and DPI manifest; WinForms is used for the tray only. -->
+    <NoWarn>$(NoWarn);WFO0003</NoWarn>
+  </PropertyGroup>
+  <ItemGroup><ProjectReference Include="..\StillFocus.Core\StillFocus.Core.csproj" /></ItemGroup>
+  <ItemGroup><Resource Include="Assets\app.ico" /><Resource Include="Assets\complete.wav" /></ItemGroup>
+</Project>
